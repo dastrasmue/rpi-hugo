@@ -22,10 +22,10 @@ download:
 	ls -la content/
 
 dockerbuild:
-	docker rmi -f $(NAMESPACE)/$(IMAGENAME):bak || true
-	docker tag $(NAMESPACE)/$(IMAGENAME) $(NAMESPACE)/$(IMAGENAME):bak || true
-	docker rmi -f $(NAMESPACE)/$(IMAGENAME) || true
-	docker build -t $(NAMESPACE)/$(IMAGENAME) .
+	docker rmi -f $(NAMESPACE)/$(IMAGENAME):$(VERSION)_bak || true
+	docker tag $(NAMESPACE)/$(IMAGENAME):$(VERSION) $(NAMESPACE)/$(IMAGENAME):$(VERSION)_bak || true
+	docker rmi -f $(NAMESPACE)/$(IMAGENAME):$(VERSION) || true
+	docker build -t $(NAMESPACE)/$(IMAGENAME):$(VERSION) .
 
 testimg:
 	docker rm -f new-$(IMAGENAME) || true
